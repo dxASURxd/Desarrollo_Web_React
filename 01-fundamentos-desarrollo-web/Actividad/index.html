@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad Lista de Recetas con React</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script>
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        const toDoList = [];
+
+        const submit = (e) => {
+            e.preventDefault();
+
+            const row = React.createElement('tr', null, [
+                React.createElement('td', { key: e.target.receta }, event.target.receta.value),
+                React.createElement('td', { key: e.target.ingredientes }, event.target.ingredientes.value),
+                React.createElement('td', { key: e.target.tiempo }, event.target.tiempo.value)
+            ]);
+
+            toDoList.push(row);
+
+            const table = React.createElement('table', null, [
+                React.createElement('thead', null, React.createElement('tr', null, [
+                    React.createElement('th', { key: 'receta-header' }, 'Receta'),
+                    React.createElement('th', { key: 'ingredientes-header' }, 'Ingredientes'),
+                    React.createElement('th', { key: 'tiempo-header' }, 'Tiempo de Preparación')
+                ])),
+                React.createElement('tbody', null, toDoList)
+            ]);
+
+            e.target.receta.value = '';
+            e.target.receta.focus();
+            e.target.ingredientes.value = '';
+            e.target.ingredientes.focus();
+            e.target.tiempo.value = '';
+            e.target.tiempo.focus();
+
+            root.render([form, table]);
+        }
+
+        const form = React.createElement('form', { onSubmit: submit }, [
+            React.createElement('input', { type: 'text', name: 'receta', placeholder: 'Nombre de la receta' }),
+            React.createElement('input', { type: 'text', name: 'ingredientes', placeholder: 'Ingredientes' }),
+            React.createElement('input', { type: 'text', name: 'tiempo', placeholder: 'Tiempo de preparación' }),
+            React.createElement('button', { type: 'submit' }, 'Agregar')
+        ]);
+
+        root.render(form);
+    </script>
+
+</body>
+
+</html>

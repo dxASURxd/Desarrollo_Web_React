@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Reloj React</title>
+</head>
+
+<body>
+  <div id="raiz" />
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js">
+  </script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+  </script>
+
+  <script>
+    const root = ReactDOM.createRoot(document.getElementById('raiz'));
+
+    const arrayNombres = []
+
+    const lista = React.createElement("ul", null, arrayNombres.map((nombre, index) => {
+      return React.createElement("li", { key: index }, nombre)
+    }))
+
+    const renderLista = (array) => {
+      const lista = React.createElement("ul", null, array.map((nombre, index) => {
+        return React.createElement("li", { key: index }, nombre)
+      }))
+      root.render([form, contenedor, lista])
+    }
+
+    const ordenarAscendente = (event) => {
+      renderLista(arrayNombres.sort())
+    }
+
+    const ordenarDescendente = (event) => {
+      renderLista(arrayNombres.sort().reverse())
+    }
+
+    const contenedor = React.createElement("div", { style: { display: "flex", columnGap: "15px", marginTop: "15px" }, className: "contenedor-botones" }, [
+      React.createElement("button",
+        { style: { backgroundColor: "blue", color: "white" }, onClick: ordenarAscendente },
+        "Orden ascendente"),
+      React.createElement("button",
+        { style: { backgroundColor: "red", color: "white" }, onClick: ordenarDescendente },
+        "Orden descendente")
+    ])
+
+    const submit = (event) => {
+      event.preventDefault();
+      arrayNombres.push(event.target.nombre.value)
+      renderLista(arrayNombres)
+    }
+
+    const form = React.createElement('form', { onSubmit: submit }, [
+      React.createElement('input', { type: 'text', name: 'nombre' }),
+      React.createElement('button', { type: 'submit' }, 'Agregar')
+    ]);
+
+    root.render([form, contenedor, lista]);
+
+  </script>
+</body>
+
+</html>

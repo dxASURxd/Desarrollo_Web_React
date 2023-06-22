@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Examples</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!-- React Library & React DOM -->
+    <!-- React library & ReactDOM (Development Version)-->
+    <script src="https://unpkg.com/react@18/umd/react.development.js">
+    </script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+    </script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js">
+    </script>
+
+    <script type="text/babel">
+        const productos = [
+            {
+                nombre: "Producto 1",
+                descripcion: "Descripción de producto 1",
+                precio: 1000
+            },
+            {
+                nombre: "Producto 2",
+                descripcion: "Descripción de producto 2",
+                precio: 2000
+            },
+            {
+                nombre: "Producto 3",
+                descripcion: "Descripción de producto 3",
+                precio: 3000
+            },
+        ];
+
+        const ProductList = () => (
+            <>
+                <h1> Mi lista de productos </h1>
+                <Form />
+                <ul>
+                    {productos.map((product) => (
+                        <li>
+                            <ProductItem product={product} />
+                        </li>
+                    ))}
+                </ul>
+            </>
+        );
+
+        const ProductItem = ({ product }) => {
+            const { nombre, descripcion, precio } = product
+            return (
+                <div>
+                    <h2>{nombre}</h2>
+                    <p>{descripcion}</p>
+                    <p>${precio}</p>
+                </div>
+            );
+        }
+
+        const Form = () => {
+            const submit = (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const nombre = form[0].value;
+                const descripcion = form[1].value;
+                const precio = form[2].value;
+                const product = { nombre, descripcion, precio };
+                productos.push(product);
+                form.reset();
+                root.render(<ProductList />);
+            }
+
+            return (
+                <form onSubmit={submit}>
+                    <input type="text" placeholder="Nombre" />
+                    <input type="text" placeholder="Descripción" />
+                    <input type="number" placeholder="Precio" />
+                    <button type="submit">Agregar</button>
+                </form>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<ProductList />);
+
+    </script>
+
+</body>
+
+</html>

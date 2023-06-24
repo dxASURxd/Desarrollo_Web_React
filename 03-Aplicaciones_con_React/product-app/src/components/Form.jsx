@@ -1,4 +1,4 @@
-const Form = ({products}) => {
+const Form = ({onSubmit}) => {
   const submit = (event) => {
     event.preventDefault()
 
@@ -7,16 +7,16 @@ const Form = ({products}) => {
     const description = form[1].value
     const price = form[2].value
     const product = {name, description, price}
-    products.push(product)
-    form.reset()
+    onSubmit(product);
+    form.reset();
   }
 
   return (
-    <form onSubmit={submit}>
-      <input type="text" placeholder="Nombre"/>
-      <input type="text" placeholder="Descripcion"/>
-      <input type="text" placeholder="Precio"/>
-      <button type="submit">Agregar</button>
+    <form onSubmit={submit} className="flex gap-3 mb-4">
+      <input type="text" placeholder="Nombre" className="border-2 gap-4 rounded-sm"/>
+      <input type="text" placeholder="Descripcion" className="border-2 gap-4 rounded-sm"/>
+      <input type="text" placeholder="Precio" className="border-2 gap-4 rounded-sm"/>
+      <button type="submit" className=" bg-slate-300 hover:bg-slate-400 rounded-md p-2">Agregar</button>
     </form>
   )
 }

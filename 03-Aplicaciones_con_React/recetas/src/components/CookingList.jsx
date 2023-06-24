@@ -6,7 +6,7 @@ const CookingList = () => {
   const [recipeCount, setRecipeCount] = useState(3);
   const [recipes, setRecipes] = useState([
     {
-      nameRepice: "receta 1",
+      nameRepice: "Café con leche",
       // listaIngredientes: {
       //   uno: "pan",
       //   dos: "leche",
@@ -17,12 +17,12 @@ const CookingList = () => {
       time: 2,
     },
     {
-      nameRepice: "receta 2",
+      nameRepice: "Papas fritas",
       ingredients: "papas, aceite, sal",
       time: 15,
     },
     {
-      nameRepice: "receta 3",
+      nameRepice: "Café helado",
       ingredients: "café, hielo, azucar",
       time: 5,
     },

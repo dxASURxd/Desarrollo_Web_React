@@ -7,6 +7,8 @@ import RefComponent from "./components/RefComponent";
 import ControledComponent from "./components/ControledComponent";
 import Contador from "./components/Contador";
 import ToDoList from "./components/ToDoList";
+import ReducerComponent from "./components/ReducerComponent";
+import ProductsComponent from "./components/ProductsComponent";
 
 const App = () => {
   return (
@@ -51,6 +53,18 @@ const App = () => {
           >
             To do list
           </Link>
+          <Link
+            className=" bg-slate-100 hover:bg-slate-50 p-2 rounded-xl"
+            to={"/reducer-component"}
+          >
+            Reducer component
+          </Link>
+          <Link
+            className=" bg-slate-100 hover:bg-slate-50 p-2 rounded-xl"
+            to={"/productos"}
+          >
+            Productos
+          </Link>
         </menu>
       </div>
 
@@ -62,6 +76,8 @@ const App = () => {
           <Route path="control-component" element={<ControledComponent />} />
           <Route path="contador" element={<Contador />} />
           <Route path="to-do-list" element={<ToDoList />} />
+          <Route path="reducer-component" element={<ReducerComponent />} />
+          <Route path="productos" element={<ProductsComponent />} />
         </Routes>
       </section>
     </BrowserRouter>

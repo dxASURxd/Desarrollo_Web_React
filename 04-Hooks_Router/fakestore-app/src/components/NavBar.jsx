@@ -6,6 +6,7 @@ const NavBar = () => {
       <Link to="/">
         <span>FakeStore</span>
       </Link>
+      {/* <h2>Numero de items:</h2> */}
       <Link to="/carrito">
         <span>Carrito</span>
       </Link>

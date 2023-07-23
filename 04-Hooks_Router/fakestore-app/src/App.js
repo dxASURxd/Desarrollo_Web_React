@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import { CartProvider } from "./provider/CartProvider";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/carrito" exact element={<Cart />} />
+            <Route path="/producto" exact element={<Product />} />
           </Routes>
         </main>
       </BrowserRouter>
